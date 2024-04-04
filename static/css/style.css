@@ -1,0 +1,32 @@
+.box{
+    border-style: solid;
+    height: 200px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/* CSS for styling the sort by price options */
+.product select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+}
+
+.product select option {
+    background-color: #fff;
+    color: #333;
+}
+
+.product select option[value="low"] {
+    font-weight: bold;
+}
+
+.product select option[value="high"] {
+    font-style: italic;
+}

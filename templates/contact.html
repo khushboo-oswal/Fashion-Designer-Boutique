@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+    <!--Contact Section Start-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 mx-auto mt-3 shadow p-3">
+                <h2 style="text-align: center; border-radius: 10px; background-color: purple; color: white;">Contact</h2><br>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        <label for="input1" class="form-label">Name: </label>
+                        <input type="text" class="form-control" id="input1" name="name" placeholder="username">
+                    </div>
+                    <div class="mb-2">
+                        <label for="input2" class="col-sm-2 col-form-label">Email:</label>
+                        <input type="email" class="form-control" id="input2" name="email">
+                    </div>
+                    <div class="mb-2">
+                        <label for="input3" class="col-sm-2 col-form-label">Phone:</label>
+                        <input type="number" class="form-control" id="input3" name="phone">
+                    </div>
+                    <div class="mb-2">
+                        <label for="input4" class="col-sm-2 col-form-label">Message:</label>
+                        <input type="text" class="form-control" id="input4" name="message">
+                    </div>
+                    <div class="mb-2">
+                        <label for="input5" class="col-sm-4 col-form-label">Appointment Date:</label>
+                        <input type="date" class="form-control" id="input5" name="appointment_date">
+                    </div>
+                    <div class="mb-2">
+                        <label for="input6" class="col-sm-4 col-form-label">Appointment Time:</label>
+                        <input type="time" class="form-control" id="input6" name="appointment_time">
+                    </div>
+                    <div class="col-auto ">
+                        <button type="submit" class="btn mb-3" style="background-color: purple; color: white;">Send</button>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% endblock 'main' %}

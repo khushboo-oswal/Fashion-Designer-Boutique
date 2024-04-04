@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<!--2nd row start or main section start-->
+<div class="row mt-5">
+    <div class="col-md-9">
+        {% for i in data %}
+        {% if forloop.counter == 1 %}
+      <div class="mt-5 p-3 shadow bg-light">
+        <p><strong>Name: </strong>{{i.uid.username}}</p>
+        <p><strong>Email: </strong>{{i.uid.email}}</p>
+        <p><strong>Date: </strong>{{i.uid.last_login}}</p>
+      </div>
+        {% endif %}
+        {% endfor %}
+
+      <div class="mt-5 p-3 shadow-lg">
+        {% for i in data %}
+        <div class="row">
+          <div class="col-md-5">
+            <img src="{{i.pid.image.url}}" class="card-img-top" alt="..." height="200px">
+          </div>
+          <div class="col-md-7">
+            <p><strong>Product Name: </strong>{{i.pid.name}}</p>
+
+            {% if i.pid.category == 1 %}
+            <p><strong>Category: </strong>Dairy</p>
+          {% elif i.pid.category == 2 %}
+            <p><strong>Category: </strong>Pen</p>
+          {% elif i.pid.category == 3 %}
+            <p><strong>Category: </strong>T-Shirt</p>
+          {% else %}
+            <p><strong>Category: </strong>Certificates</p>
+          {% endif %}
+
+            <p><strong>Details: </strong>{{i.pid.pdetail}}</p>
+            <p><strong>Price (per item): </strong>{{i.pid.price}}</p>
+
+            <p>
+              <strong>Qty:</strong>
+              <a href="/quantity/0/{{i.id}}"><button><i class="bi bi-dash"></i></button></a>
+              <input type="text" value="{{i.quantity}}">
+              <a href="/quantity/1/{{i.id}}"><button><i class="bi bi-plus"></i></button></a>
+            </p>
+
+            <p>
+              <a href="/remove/{{i.id}}"><button><i class="bi bi-trash"></i>Remove</button></a>
+            </p>
+        </div>
+      </div><!--cart product 1-->
+      <hr>
+      {% endfor %}
+
+    </div>
+    </div>
+    <div class="col-md-3 mt-3 p-4 shadow">
+      <h5>Price Detail</h5><hr>
+      <p><strong>Price({{n}} items):</strong> Rs. {{total}}</p>
+      <p><strong>Total Price:</strong> Rs. {{total}}</p>
+      <a href="/placeorder"><button class="btn btn-danger">Place Order</button></a>
+      <a href="/order_history"><button class="btn btn-danger">Order History</button></a>
+    </div>
+  </div><!--2nd row end or main section end-->
+  {% endblock 'main' %}

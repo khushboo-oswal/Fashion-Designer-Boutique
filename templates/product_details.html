@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+    <!--2nd row start or main section start-->
+    {% for i in data %}
+    <div class="row mt-5">
+    <div class="col-md-12 max-auto">
+      <div class="row mb-5 p-3">
+        <div class="col-md-3">
+          <img src="{{i.image.url}}" class="card-img-top" alt="..." height="300px">
+        </div>
+        <div class="col-md-9">
+
+          {% if errmsg %}
+          <div class="alert alert-danger" role="alert">
+              {{errmsg}}
+          </div>
+          {% endif %} 
+
+
+          {% if success %}
+          <div class="alert alert-success" role="alert">
+              {{success}}
+          </div>
+          {% endif %} 
+
+          <p><strong>Product Name: </strong>{{i.name}}</p>
+
+          {% if i.category == 1 %}
+            <p><strong>Category: </strong>Blouse</p>
+          {% elif i.category == 2 %}
+            <p><strong>Category: </strong>One-Piece</p>
+          {% elif i.category == 3 %}
+            <p><strong>Category: </strong>Jumpsuit</p>
+          {% else %}
+            <p><strong>Category: </strong>Co-Ord Sets</p>
+          {% endif %}
+
+          <p><strong>Details: </strong>{{i.detail}}</p>
+          <p><strong>Fabric: </strong>{{i.fabric}}</p>
+          <p><strong>Size: </strong>{{i.size}}</p>
+          <p><strong>Color: </strong>{{i.color}}</p>
+          <p><strong>Price: </strong>Rs. {{i.price}}</p>
+          <a href="/addtocart/{{i.id}}"><button class="btn btn-danger">Add to Cart</button></a>
+          <a href="/viewcart"><button class="btn btn-danger">View Cart</button></a>
+          <a href="/product"><button class="btn btn-danger">Shop More</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <!--2nd row end or main section end-->
+        
+{% endblock 'main' %}
